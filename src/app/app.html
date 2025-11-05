@@ -1,0 +1,206 @@
+<!-- <h1>{{title}}</h1>
+<h2>{{name}}</h2>
+<h2>{{10+10+20}}</h2>
+<h2>{{10==10}}</h2>
+
+<button (click)="handleClickEvent()">Click Me</button>
+<button (click)="sum(10,20)">Sum</button>
+
+<app-login></app-login>
+<app-signup></app-signup>
+<app-profile></app-profile> -->
+
+<!-- <h1>Counter App</h1>
+<div style="text-align:center">
+    <h3 class="count">{{count}}</h3>
+    <div>
+        <button (click) = "handleDecrement()" class="btn bg-red">Decrement</button>
+        <button (click) = "handleReset()" class="btn bg-black">Reset</button>
+        <button (click) = "handleIncrement()" class="btn bg-green">Increment</button>
+
+        <button (click)="handleCounter('minus')" class="btn bg-red">Decrement</button>
+        <button (click)="handleCounter('reset')" class="btn bg-black">Reset</button>
+        <button (click)="handleCounter('plus')" class="btn bg-green">Increment</button>
+    </div>
+</div> -->
+
+<!-- <h1>Get and set Input field Value</h1>
+<h2>{{username}}</h2>
+<input value="{{username}}" (input)="getUserName($event)" #userNameField type="text" placeholder="enter user name">
+<br><br>
+<button (click)="setUserName()">Set User Name</button>
+<button (click)="getUserNameWithTemplate(userNameField.value)">Get User Name</button> -->
+
+<!-- <h1> If Else | Control Flow</h1>
+@if(val==10){
+<div style="background-color:yellow; height:200px; width:200px;">
+</div>
+}
+
+<button (click)="hide()">Hide</button>
+<button (click)="show()">show</button>
+<button (click)="toggle()">Toggle</button>
+<button (click)="toggle()">
+    {{display?'hide':'show'}}
+</button>
+
+@if(display) {
+    <div style="background-color:green; height:200px; width:200px;">
+    </div>
+}
+
+<hr>
+
+<button (click)="toggleDivs()">Toggle Divs</button>
+@if(displayOneDiv){
+    <div style="background-color:blue; width:100px; height:100px;">
+
+    </div>
+}
+@else {
+    <div style="background-color:red; width:100px; height:100px;">
+
+    </div>
+} -->
+
+
+
+<!-- <h1>Switch Case in Angular</h1>
+
+<button (click)="handleColor('red')">Red</button>
+<button (click)="handleColor('green')">Green</button>
+<button (click)="handleColor('yellow')">yellow</button>
+<button (click)="handleColor('blue')">blue</button>
+
+<input type="text" placeholder="enter color" (input)="changeColor($event)">
+
+@switch(color){
+    @case('red'){
+        <h1 style="background-color:red">Red color</h1>
+    }
+    @case('blue'){
+        <h1 style="background-color:blue">Red color</h1>
+    }
+    @case('yellow'){
+        <h1 style="background-color:yellow">Red color</h1>
+    }
+    @case('green'){
+        <h1 style="background-color:green">Red color</h1>
+    }
+    @default{
+        <h1 style="background-color:black; color:white">No color matched</h1>
+    }
+} -->
+
+<!-- @for(user of users;track user){
+    <h2>{{user}}</h2>
+}
+
+@for(student of students; track student.name;let id=$index){
+    <h2>
+        <span>{{id}} </span>
+        <span>{{student.name}} </span>
+        <span>{{student.age}} </span>
+        <span>{{student.email}} </span>
+        <button (click)="getName(student.name)">Get Name</button>
+    </h2>
+} -->
+
+<!-- 
+<h1>Event in Angular</h1>
+<button class="btn" name="login" (click)="handleEvent($event)">Click on Button</button>
+<br><br>
+<div (mouseenter)="handleEvent($event)" style="background-color: green; height:100px; width:100px;">
+</div>
+
+<br><br>
+<div (mouseleave)="handleEvent($event)" style="background-color: green; height:100px; width:100px;">
+</div>
+
+<br><br>
+<input type="text" 
+(focus)="handleEvent($event)" 
+(input)="handleEvent($event)" 
+(blur)="handleEvent($event)"
+name="user"> -->
+
+<!-- <h1>Basics of Signals</h1> -->
+<!-- 
+<h1>{{data}}</h1>
+<h2>{{count()}}</h2>
+<button (click)="updateValue()">Update Value</button> -->
+
+<!-- <button (click)="updateValue('dec')">Decrement</button>
+<h2>{{count()}}</h2>
+<button (click)="updateValue('inc')">Increment</button> -->
+
+
+<!-- <h1>Types with Signal</h1>
+<h1>{{data()}}</h1>
+
+<button (click)="updateValue()">Update</button> -->
+
+<!-- <h1>Computed Signal</h1>
+
+<h2>{{z()}}</h2>
+<button (click)="updateValue()">Update Value</button>
+<button (click)="updateXValue()">Update X Value</button> -->
+
+
+<!-- <h1>Effect in Angular</h1>
+<h1>{{count()}}</h1>
+
+
+<button (click)="count.set(count()+1)">Update Username</button>
+
+@if(displayHeading){
+    <h1 style="background-color:green">Main Heading</h1>
+} -->
+
+<!-- <h1>For Loop Contextual Variables</h1>
+@for(user of users; track user; let e = $even; let o = $odd){
+    @if($first || $last){
+        <h3 style="background-color:greenyellow">This is User No.={{$index+1}} and name={{user}}</h3>
+    }
+    @else {
+        <h3>This is User No.={{$index+1}} and name={{user}}</h3>
+    }
+    @if(e){
+        <h1 style="background-color:#ddd">This is User No.={{$index+1}} and name={{user}}</h1>
+    }
+    @if(o) {
+        <h1 style="background-color:greenyellow">This is User No.={{$index+1}} and name={{user}}</h1>
+    }
+} -->
+
+<!-- 
+<h2>Two Way Binding</h2>
+
+<input type="text" [(ngModel)]="name" placeholder="enter name">
+<h1>{{name}}</h1>
+
+
+<input type="text" placeholder="enter name" (input)="changeName($event)">
+<h1>{{name}}</h1> -->
+
+
+<!-- <input type="text" [(ngModel)]="task" placeholder="enter task name">
+<button (click)="addTask()" >Add Task</button>
+
+@for(task of taskList;track task.id){
+    
+    <ul class="task-list">
+        <li>{{task.id}}</li>
+        <li>{{task.name}}</li>
+        <li><button (click)="deleteTask(task.id)">Delete Button</button></li>
+    </ul>
+
+}
+ -->
+
+ <h1>Dynamic Styling</h1>
+
+ <h1 [style.color]="color" [style.fontSize]="fontSizeNormal">Heading Tag 1</h1>
+ <h1 [style.fontSize]="zoom ? fontSizeBig : fontSizeNormal">Heading Tag 2</h1>
+ <button (click)="zoomToggle()">Zoom Toggle</button>
+ <h1 [style.fontSize.px]="size">Heading Tag 3</h1>
