@@ -198,9 +198,119 @@ name="user"> -->
 }
  -->
 
- <h1>Dynamic Styling</h1>
+<!-- <h1>Dynamic Styling</h1>
 
  <h1 [style.color]="color" [style.fontSize]="fontSizeNormal">Heading Tag 1</h1>
  <h1 [style.fontSize]="zoom ? fontSizeBig : fontSizeNormal">Heading Tag 2</h1>
  <button (click)="zoomToggle()">Zoom Toggle</button>
- <h1 [style.fontSize.px]="size">Heading Tag 3</h1>
+ <h1 [style.fontSize.px]="size">Heading Tag 3</h1> -->
+
+
+<!-- <h1 *ngIf="show">Heading Tag</h1>
+
+ <h1>*ngFor Directives in Angular</h1>
+
+ <ul>
+    <li *ngFor="let x of students">
+        {{x}}
+    </li>
+ </ul>
+
+
+ <ul>
+    <li *ngFor="let x of studentData">
+        {{x.name}} - {{x.age}} - {{x.email}}
+    </li>
+ </ul> -->
+
+
+<!-- <h1>*ngIf Directives in Angular</h1>
+ <h1 *ngIf="show">Heading 1</h1>
+
+ <button (click)="toggle()">Toggle</button> -->
+
+
+<!-- <h1 *ngIf="block==1">Heading 1</h1>
+<h1 *ngIf="block==2">Heading 2</h1>
+<h1 *ngIf="block==3">Heading 3</h1>
+<h1 *ngIf="block==4">Heading 4</h1>
+
+<button (click)="updateBlockVal()">Toggle Heading</button>
+
+<button (click)="loginToggle()" *ngIf="login;else elseBlock ">Logout</button>
+<ng-template #elseBlock>
+    <button  (click)="loginToggle()">Login</button>
+</ng-template> -->
+
+
+<!-- <h1>*ngSwitch Directive in Angular</h1>
+
+<button (click)="changeColor('red')">Red Color</button>
+<button (click)="changeColor('green')">Green Color</button>
+<button (click)="changeColor('blue')">Blue Color</button>
+<button (click)="changeColor('yellow')">yellow Color</button>
+<button (click)="changeColor('pink')">Pink Color</button>
+<button (click)="changeColor('cyan')">Cyan Color</button>
+
+<div [ngSwitch]="color">
+    <h1 *ngSwitchCase="'red'" style="background-color:red">Red Color</h1>
+    <h1 *ngSwitchCase="'green'" style="background-color:green">Green Color</h1>
+    <h1 *ngSwitchCase="'blue'" style="background-color:blue">Blue Color</h1>
+    <h1 *ngSwitchCase="'yellow'" style="background-color:yellow">Yellow Color</h1>
+    <h1 *ngSwitchCase="'pink'"  style="background-color:pink">Pink Color</h1>
+    <h1 *ngSwitchCase="'cyan'" style="background-color:cyan">Cyan Color</h1>
+
+    <h1 *ngSwitchDefault>No colour matched! </h1>
+</div> -->
+
+<!-- <h1>Basic Routing in Angular</h1> -->
+
+<!-- <app-header>
+
+</app-header>
+<router-outlet> -->
+
+
+<!-- <h1>Basics of React Forms</h1>
+
+<input type="text" placeholder="enter name" [formControl]="name">
+<br><br>
+<input type="text" placeholder="enter password" [formControl]="password">
+<br><br>
+<input type="text" placeholder="enter email" [formControl]="email">
+<br><br>
+
+<button (click)="getValue()">Get Info</button>
+<button (click)="setValue()">Set Info</button>
+
+<h1>{{name.value}}</h1>
+<h1>{{password.value}}</h1>
+<h1>{{email.value}}</h1> -->
+
+
+<h1>Form Grouping in Reactive Forms</h1>
+
+<form [formGroup]="profileForm" (ngSubmit)="submitData()">
+    <input type="text" placeholder="enter name" formControlName="name">
+    <span *ngIf="name?.hasError('required')"> * </span>
+    <span class="error" *ngIf="name?.invalid && (name?.dirty || name?.touched)">Please enter valid name</span>
+    <br><br>
+
+    <input type="text" placeholder="enter password" formControlName="password">
+    <span *ngIf="password?.hasError('required')"> * </span>
+    <span class="error" *ngIf="password?.invalid && (password?.dirty || password?.touched)"> Please enter valid
+        password</span>
+    <br><br>
+
+    <input type="text" placeholder="enter email" formControlName="email">
+    <span *ngIf="email?.hasError('required')"> * </span>
+    <span class="error" *ngIf="email?.invalid && (email?.dirty || email?.touched)">Please enter valid email</span>
+    <br><br>
+
+    <button>Submit</button>
+    <button type="button" (click)="setValues()">Set Value</button>
+</form>
+
+<h1>{{this.profileForm.value.name}}</h1>
+<h1>{{this.profileForm.value.password}}</h1>
+<h1>{{this.profileForm.value.email}}</h1>

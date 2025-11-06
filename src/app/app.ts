@@ -1,5 +1,5 @@
 import { Component, computed } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { Login } from './login/login';
 import { Signup } from './signup/signup';
 import { Profile } from './profile/profile';
@@ -8,11 +8,20 @@ import { signal } from '@angular/core';
 import { effect } from '@angular/core';
 import { WritableSignal } from '@angular/core';
 import { Signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
+import { NgSwitch, NgSwitchCase } from '@angular/common';
+import { Routes } from '@angular/router';
+import { About } from './about/about';
+import { Contact } from './contact/contact';
+import { Header } from './header/header';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Login, Signup, Profile, FormsModule],
+  imports: [RouterOutlet, Login, Signup, Profile, FormsModule, NgIf, NgFor, NgSwitch, NgSwitchCase, RouterLink, Header, ReactiveFormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -229,16 +238,113 @@ export class App {
   // }
 
 
-  color = 'orange';
-  fontSize = '15px';
+  // color = 'orange';
+  // fontSize = '15px';
 
-  fontSizeBig = '60px';
-  fontSizeNormal = '30px';
-  zoom = true;
-  size = 45;
+  // fontSizeBig = '60px';
+  // fontSizeNormal = '30px';
+  // zoom = true;
+  // size = 45;
 
-  zoomToggle() {
-    this.zoom = !this.zoom; 
+  // zoomToggle() {
+  //   this.zoom = !this.zoom; 
+  // }
+
+
+
+  // show = true;
+
+  // students = ['Sumit','Sarvagya','Sharad', 'Rudar', 'Sachit', 'Smarth', 'Safal', 'Mohit', 'Anshul', 'Bipin'];
+
+  // studentData = [{
+  //   name: 'Sumit',
+  //   age:25,
+  //   email:'Sumit@test.com'
+  // },
+  // {
+  //   name: 'Sharad',
+  //   age:22,
+  //   email:'Sharad@test.com'
+  // },
+  // {
+  //   name: 'Roham',
+  //   age:18,
+  //   email:'Rohan@test.com'
+  // },
+  // {
+  //   name: 'Anshul',
+  //   age:21,
+  //   email:'Anshul@test.com'
+  // },
+  // {
+  //   name: 'Rudar',
+  //   age:21,
+  //   email:'Rudar@test.com'
+  // }]
+
+
+  // show = true;
+  // toggle() {
+  //   this.show = !this.show;
+  // }
+
+  // block=1;
+  // updateBlockVal(){
+  //   this.block++;
+  // }
+
+  // login=true;
+  // loginToggle(){
+  //   this.login = !this.login;
+  // }
+
+  // color = 'red';
+
+  // changeColor(str:string){
+  //   this.color = str;
+  // }
+
+  // name = new FormControl('anil');
+  // password = new FormControl('123');
+  // email = new FormControl('anil@test.com');
+
+  // getValue() {
+  //   console.log(this.name.value);
+  //   console.log(this.password.value);
+  //   console.log(this.email.value);
+  // }
+  // setValue(){
+  //   this.name.setValue("peter");
+  //   this.password.setValue("1234");
+  //   this.email.setValue("peter@test.com");
+  // }
+
+  profileForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    email: new FormControl('', [Validators.required, Validators.maxLength(30),Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]),
+  });
+
+  submitData() {
+    console.log(this.profileForm.value);
   }
-  
+
+  setValues() {
+    this.profileForm.setValue({
+      name: 'peter',
+      password: '123',
+      email: 'peter@test.com'
+    })
+  }
+
+  get name() {
+    return this.profileForm.get('name');
+  }
+  get email() {
+    return this.profileForm.get('email');
+  }
+  get password() {
+    return this.profileForm.get('password');
+  }
+
 }
