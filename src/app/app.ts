@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { afterEveryRender, afterNextRender, Component, computed, ViewChild } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Login } from './login/login';
 import { Signup } from './signup/signup';
@@ -8,7 +8,7 @@ import { signal } from '@angular/core';
 import { effect } from '@angular/core';
 import { WritableSignal } from '@angular/core';
 import { Signal } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, NgForm, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 import { NgSwitch, NgSwitchCase } from '@angular/common';
@@ -18,10 +18,12 @@ import { Contact } from './contact/contact';
 import { Header } from './header/header';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { User } from './user/user';
+import { CurrencyConvertorPipe } from './pipe/currency-convertor-pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Login, Signup, Profile, FormsModule, NgIf, NgFor, NgSwitch, NgSwitchCase, RouterLink, Header, ReactiveFormsModule],
+  imports: [RouterOutlet, Login, Signup, Profile, FormsModule, NgIf, NgFor, NgSwitch, NgSwitchCase, RouterLink, Header, ReactiveFormsModule, User, CurrencyConvertorPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -319,32 +321,78 @@ export class App {
   //   this.email.setValue("peter@test.com");
   // }
 
-  profileForm = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    email: new FormControl('', [Validators.required, Validators.maxLength(30),Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]),
-  });
+  // profileForm = new FormGroup({
+  //   name: new FormControl('', [Validators.required]),
+  //   password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+  //   email: new FormControl('', [Validators.required, Validators.maxLength(30),Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]),
+  // });
 
-  submitData() {
-    console.log(this.profileForm.value);
-  }
+  // submitData() {
+  //   console.log(this.profileForm.value);
+  // }
 
-  setValues() {
-    this.profileForm.setValue({
-      name: 'peter',
-      password: '123',
-      email: 'peter@test.com'
+  // setValues() {
+  //   this.profileForm.setValue({
+  //     name: 'peter',
+  //     password: '123',
+  //     email: 'peter@test.com'
+  //   })
+  // }
+
+  // get name() {
+  //   return this.profileForm.get('name');
+  // }
+  // get email() {
+  //   return this.profileForm.get('email');
+  // }
+  // get password() {
+  //   return this.profileForm.get('password');
+  // }
+
+
+  // userData:NgForm|null=null;
+  // userData: any | null = null;
+
+  // addUser(val: NgForm) {
+  //   console.log(val);
+  //   this.userData = val;
+  // }
+
+
+  // userName = '';
+  // city='';
+
+  // changeUser(val:string){
+  //   this.userName = val;
+  // }
+
+  // users = ['Anil', 'Sam', 'Peter', 'Bruce', 'John'];
+
+  // users: undefined | string[];
+
+  // handleUsers(users: string[]) {
+  //   console.log(users);
+  //   this.users = users;
+  // }
+
+  // amount=10;
+
+  @ViewChild('user') User: any;
+
+  counter = 0;
+
+  constructor() {
+    afterEveryRender(() => {
+      console.log("afterEveryRender", this.User.counter);
+    })
+    afterNextRender(() => {
+      console.log("afterNextRender", this.User.counter);
     })
   }
 
-  get name() {
-    return this.profileForm.get('name');
-  }
-  get email() {
-    return this.profileForm.get('email');
-  }
-  get password() {
-    return this.profileForm.get('password');
+  updateCounter() {
+    this.counter++;
   }
 
 }
+
