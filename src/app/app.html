@@ -380,10 +380,100 @@ name="user"> -->
 <h2>{{ amount | currencyConvertor:12}}</h2>
 <h2>{{ amount | currencyConvertor:5}}</h2> -->
 
-
+<!-- 
 <h1>Life Cycle Methods in Angular</h1>
 
 <button (click)="updateCounter()">Count: {{counter}}</button>
 <div *ngIf="counter!=5">
     <app-user [counter]="counter" #user  ></app-user>
-</div>
+</div> -->
+
+
+<!-- <h1>Pipes in Angular</h1>
+ 
+<h2>{{title}}</h2>
+<h2>{{ title | uppercase }}</h2>
+<h2>{{ title | titlecase }}</h2>
+<h2>{{ title | lowercase }}</h2>
+<p>=================================</p>
+
+<h2>{{date}}</h2>
+<h2>{{date | date:'fullDate'}}</h2>
+<h2>{{date | date:'hh:mm:ss'}}</h2>
+<p>=================================</p>
+
+<h2>{{amount}}</h2>
+<h2>{{ amount | currency:'EUR' }}</h2>
+<h2>{{ amount | currency:'INR' }}</h2>
+<p>=================================</p>
+
+
+<h2>{{date | date:'fullDate' | uppercase}}</h2>
+
+ -->
+
+
+<!-- <h1>Services</h1>
+
+ <button (click)="getProductData()">Load Product Data</button>
+
+ @for (x of productData; track x){
+    <h1>{{x.name}} - {{x.brand}} - {{x.price}}</h1>
+ } -->
+
+
+
+<!-- <h1>API Call Service</h1>
+
+ @for(product of productList; track product.id){
+    <ul style="list-style-type: none;">
+        <li> <b>Name: </b> {{product.title}}</li>
+        <li> <b>Price: </b> {{product.price}}</li>
+        <li> <b>Rating: </b> {{product.rating}}</li>
+        <li> <b>Category: </b> {{product.category}}</li>
+        <li> <img style="width: 15%;"  src="{{product.thumbnail}}" alt=""></li>
+    </ul>
+ } -->
+
+
+<!-- <h1>API Call Service</h1>
+
+@for(x of users; track x.id){
+    <ul style="list-style-type: none;">
+        <li>{{x.name}}</li>
+        <li>{{x.age}}</li>
+        <li>{{x.email}}</li>
+    </ul>
+} -->
+
+
+
+
+<form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+    <input type="text" placeholder="enter name" name="name" [ngModel]="selectedUser?.name">
+    <br><br>
+
+    <input type="text" placeholder="enter email" name="email" [ngModel]="selectedUser?.email">
+    <br><br>
+
+    <input type="text" placeholder="enter age" name="age" [ngModel]="selectedUser?.age">
+    <br><br>
+
+    @if(!selectedUser){
+        <button>Add User</button>
+    }
+    @else{
+        <button>Update User</button>
+    }
+</form>
+
+
+@for(x of users; track x.id){
+    <ul style="list-style-type: none;">
+        <li>{{x.name}}</li>
+        <li>{{x.age}}</li>
+        <li>{{x.email}}</li>
+        <li><button (click)="deleteUser(x.id)">Delete</button></li>
+        <li><button (click)="selectUser(x.id)">Update User</button></li>
+    </ul>
+}

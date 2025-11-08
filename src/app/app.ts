@@ -18,12 +18,18 @@ import { Contact } from './contact/contact';
 import { Header } from './header/header';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { User } from './user/user';
+// import { User } from './user/user';  // interface name is also User :(
+import { User } from "./interfaces/User";
+
+import { CommonModule } from '@angular/common';
 import { CurrencyConvertorPipe } from './pipe/currency-convertor-pipe';
+import { Product } from './services/product';
+import { Users } from './services/users';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Login, Signup, Profile, FormsModule, NgIf, NgFor, NgSwitch, NgSwitchCase, RouterLink, Header, ReactiveFormsModule, User, CurrencyConvertorPipe],
+  imports: [RouterOutlet, Login, Signup, Profile, FormsModule, NgIf, NgFor, NgSwitch, NgSwitchCase, RouterLink, Header, ReactiveFormsModule, CommonModule, CurrencyConvertorPipe],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -377,22 +383,99 @@ export class App {
 
   // amount=10;
 
-  @ViewChild('user') User: any;
 
-  counter = 0;
+  // @ViewChild('user') User: any;
 
-  constructor() {
-    afterEveryRender(() => {
-      console.log("afterEveryRender", this.User.counter);
-    })
-    afterNextRender(() => {
-      console.log("afterNextRender", this.User.counter);
+  // counter = 0;
+
+  // constructor() {
+  //   afterEveryRender(() => {
+  //     console.log("afterEveryRender", this.User.counter);
+  //   })
+  //   afterNextRender(() => {
+  //     console.log("afterNextRender", this.User.counter);
+  //   })
+  // }
+
+  // updateCounter() {
+  //   this.counter++;
+  // }
+
+
+  // title="Code step by step";
+  // date = new Date();
+  // amount=10;
+
+  // productData: {name:string,brand:string,price:number}[] | undefined;
+
+  // constructor(private productService:Product){
+
+  // }
+
+  // getProductData(){
+  //   this.productData = this.productService.getProductData();
+  //   console.log(this.productData);
+  // }
+
+
+  // productList:any;
+  // constructor(private productService:Product){
+
+  // }
+
+  // ngOnInit(){
+  //   this.productService.getProductList().subscribe((data:any)=>{
+  //     console.log(data);
+  //     this.productList=data.products;
+  //   })
+
+  // }
+
+
+  users: User[] = [];
+
+  selectedUser: User | undefined;
+
+  constructor(private userService: Users) { }
+
+  ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
+    this.userService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
+      console.log(this.users);
     })
   }
 
-  updateCounter() {
-    this.counter++;
+  addUser(user: User) {
+    if (!this.selectedUser) {
+      this.userService.saveUsers(user).subscribe((data: User) => {
+        console.log(data);
+        if (data) {
+          this.getUser();
+        }
+      })
+    }
+    else {
+      console.log("updated user here:" + user);
+    }
   }
 
+  deleteUser(id: string) {
+    this.userService.deleteUser(id).subscribe((data: User) => {
+      console.log(data);
+      if (data) {
+        this.getUser();
+      }
+    })
+  }
+
+
+  selectUser(id: string) {
+    this.userService.getSelectedUser(id).subscribe((data: User) => {
+      this.selectedUser = data;
+    })
+  }
 }
-
