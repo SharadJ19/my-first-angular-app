@@ -432,50 +432,59 @@ export class App {
   // }
 
 
-  users: User[] = [];
+  // users: User[] = [];
 
-  selectedUser: User | undefined;
+  // selectedUser: User | undefined;
 
-  constructor(private userService: Users) { }
+  // constructor(private userService: Users) { }
 
-  ngOnInit() {
-    this.getUser();
-  }
+  // ngOnInit() {
+  //   this.getUser();
+  // }
 
-  getUser() {
-    this.userService.getUsers().subscribe((data: User[]) => {
-      this.users = data;
-      console.log(this.users);
-    })
-  }
+  // getUser() {
+  //   this.userService.getUsers().subscribe((data: User[]) => {
+  //     this.users = data;
+  //     console.log(this.users);
+  //   })
+  // }
 
-  addUser(user: User) {
-    if (!this.selectedUser) {
-      this.userService.saveUsers(user).subscribe((data: User) => {
-        console.log(data);
-        if (data) {
-          this.getUser();
-        }
-      })
-    }
-    else {
-      console.log("updated user here:" + user);
-    }
-  }
+  // addUser(user: User) {
+  //   if (!this.selectedUser) {
+  //     this.userService.saveUsers(user).subscribe((data: User) => {
+  //       console.log(data);
+  //       if (data) {
+  //         this.getUser();
+  //       }
+  //     })
+  //   }
+  //   else {
+  //     const userData = {...user,id:this.selectedUser.id};
 
-  deleteUser(id: string) {
-    this.userService.deleteUser(id).subscribe((data: User) => {
-      console.log(data);
-      if (data) {
-        this.getUser();
-      }
-    })
-  }
+  //     this.userService.updateUser(userData).subscribe((data)=>{
+  //       if(data){
+  //         this.getUser()
+  //       }
+  //     })
+  //   }
+  // }
+
+  // deleteUser(id: string) {
+  //   this.userService.deleteUser(id).subscribe((data: User) => {
+  //     console.log(data);
+  //     if (data) {
+  //       this.getUser();
+  //     }
+  //   })
+  // }
 
 
-  selectUser(id: string) {
-    this.userService.getSelectedUser(id).subscribe((data: User) => {
-      this.selectedUser = data;
-    })
-  }
+  // selectUser(id: string) {
+  //   this.userService.getSelectedUser(id).subscribe((data: User) => {
+  //     this.selectedUser = data;
+  //   })
+  // }
+
+
+
 }

@@ -449,7 +449,7 @@ name="user"> -->
 
 
 
-<form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+<!-- <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
     <input type="text" placeholder="enter name" name="name" [ngModel]="selectedUser?.name">
     <br><br>
 
@@ -476,4 +476,17 @@ name="user"> -->
         <li><button (click)="deleteUser(x.id)">Delete</button></li>
         <li><button (click)="selectUser(x.id)">Update User</button></li>
     </ul>
-}
+} -->
+
+
+
+
+<!-- <h1>Route Lazy Loading</h1>
+
+<a routerLink="/admin">Go to Admin Page</a>
+<router-outlet></router-outlet> -->
+
+
+<h1>Build and run app on localhost</h1>
+<p>"ng build" then start http-server in folder containing build index.html file</p>
+
